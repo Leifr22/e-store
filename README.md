@@ -1,6 +1,6 @@
 # E-Store
 
-This repository contains a small e-store built with FastAPI, which allows users to manage products and categories.
+This repository contains a e-store built with FastAPI, which allows users to manage products and categories.
 
 ## Description
 
