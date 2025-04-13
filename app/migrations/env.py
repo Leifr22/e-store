@@ -12,6 +12,7 @@ from app.backend.db import Base
 from app.models.user import User  # сначала импортируем User
 from app.models.categories import Category  # затем Category
 from app.models.products import Product  # и затем Product
+from app.models.review import Review
 
 # this is the Alembic Config object, which provides
 # access to the values within the .ini file in use.
