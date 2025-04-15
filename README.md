@@ -10,6 +10,8 @@ The E-Store project is designed to demonstrate a simple yet functional e-commerc
 - Category management: Organize products into categories for easier navigation.
 - API documentation: Automatically generated and interactive API docs provided by FastAPI.
 - Database migrations: Ensure your database schema is up-to-date by applying migrations.
+- Logging: Application logs are generated for better monitoring and debugging.
+- Celery with Redis: Asynchronous task processing using Celery and Redis.
 
 ## Features
 
@@ -17,45 +19,53 @@ The E-Store project is designed to demonstrate a simple yet functional e-commerc
 - **CRUD operations**: Full support for creating, reading, updating, and deleting products and categories.
 - **Product reviews**: Users can leave reviews for products to share their feedback.
 - **Automatic API docs**: Interactive API documentation is automatically generated using Swagger UI and ReDoc.
+- **Asynchronous processing**: Celery and Redis are used for background task execution.
+- **Logging**: Integrated logging for monitoring application activity.
 
 ## Installation
 
 1. Clone the repository:
-    ```sh
-    git clone https://github.com/Leifr22/e-store.git
-    ```
+   ```sh
+   git clone https://github.com/Leifr22/e-store.git
+   ```
 
 2. Navigate to the project directory:
-    ```sh
-    cd e-store
-    ```
+   ```sh
+   cd e-store
+   ```
 
 3. (Optional) Create and activate a virtual environment:
-    ```sh
-    python -m venv venv
-    source venv/bin/activate  # On Windows use `venv\Scripts\activate`
-    ```
+   ```sh
+   python -m venv venv
+   source venv/bin/activate  # On Windows use `venv\Scripts\activate`
+   ```
 
 4. Install the dependencies:
-    ```sh
-    pip install -r requirements.txt
-    ```
+   ```sh
+   pip install -r requirements.txt
+   ```
 
 5. Apply migrations to set up the database schema:
-    ```sh
-    alembic upgrade head
-    ```
+   ```sh
+   alembic upgrade head
+   ```
+
+6. Start Redis and Celery workers:
+   ```sh
+   redis-server
+   celery -A app_name worker --loglevel=info
+   ```
 
 ## Usage
 
 1. Start the server:
-    ```sh
-    uvicorn main:app --reload
-    ```
+   ```sh
+   uvicorn main:app --reload
+   ```
 
 2. Access the API documentation at:
-    - Swagger UI: `http://127.0.0.1:8000/docs`
-    - ReDoc: `http://127.0.0.1:8000/redoc`
+   - Swagger UI: `http://127.0.0.1:8000/docs`
+   - ReDoc: `http://127.0.0.1:8000/redoc`
 
 3. Use the provided endpoints to manage products and categories.
 
@@ -67,11 +77,5 @@ The E-Store project is designed to demonstrate a simple yet functional e-commerc
 - `crud.py`: Implements the CRUD operations.
 - `database.py`: Sets up the database connection.
 - `endpoints/`: Contains the API route definitions.
-
-## Upcoming Features
-
-- Enhanced review management: Ability to moderate and respond to product reviews.
-
-## Contributing
-
-Contributions are welcome! Please fork the repository and open a pull request with your proposed changes.
+- `tasks.py`: Defines Celery tasks.
+- `logging_config.py`: Configures the logging.
