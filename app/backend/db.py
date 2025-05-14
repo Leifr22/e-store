@@ -10,7 +10,7 @@ class Base(DeclarativeBase):
 
 
 # Создаём подключение к БД
-DATABASE_URL = 'postgresql+asyncpg://postgres:postgres@localhost:5432/ecommerce'  # Исправленный путь
+DATABASE_URL = 'postgresql+asyncpg://postgres:postgres@db:5432/ecommerce' # Исправленный путь
 engine = create_async_engine(DATABASE_URL, echo=True)
 SessionLocal = async_sessionmaker(engine, expire_on_commit=False, class_=AsyncSession)
 

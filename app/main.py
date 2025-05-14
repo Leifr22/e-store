@@ -5,12 +5,17 @@ from app.log import log_middleware
 from app.models.categories import Category
 from app.routers import categories, products, auth, permission,review
 from app.tasks import background_task
+from app.tasks import background_task
 app=FastAPI()
 app.middleware('http')(log_middleware)
 @app.get('/')
 async def welcome():
     background_task.delay('Greetings')
     return {'message': 'Me e-commerce app'}
+@app.get('/')
+async def hello_world(message: str):
+    background_task.delay(message)
+    return {'message': 'Task sent!'}
 app.include_router(categories.router)
 app.include_router(products.router)
 app.include_router(auth.router)
