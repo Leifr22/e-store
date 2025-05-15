@@ -1,9 +1,6 @@
 
 # E-Store
 
-[![Python](https://img.shields.io/badge/python-3.7%2B-blue)](https://www.python.org/)
-[![FastAPI](https://img.shields.io/badge/FastAPI-0.95-green)](https://fastapi.tiangolo.com/)
-
 A lightweight, high-performance e-commerce backend built with FastAPI. Manage products, categories, and reviews via a RESTful API with interactive docs.
 
 ---
@@ -20,7 +17,7 @@ A lightweight, high-performance e-commerce backend built with FastAPI. Manage pr
 
 ## 🛠 Tech Stack
 
-- Python 3.7+
+- Python
 - FastAPI
 - SQLAlchemy + Alembic
 - Uvicorn
