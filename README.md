@@ -1,77 +1,105 @@
+
 # E-Store
 
-This repository contains an e-store built with FastAPI, which allows users to manage products and categories.
+[![Python](https://img.shields.io/badge/python-3.7%2B-blue)](https://www.python.org/)
+[![FastAPI](https://img.shields.io/badge/FastAPI-0.95-green)](https://fastapi.tiangolo.com/)
 
-## Description
+A lightweight, high-performance e-commerce backend built with FastAPI. Manage products, categories, and reviews via a RESTful API with interactive docs.
 
-The E-Store project is designed to demonstrate a simple yet functional e-commerce backend using FastAPI. It includes features such as:
+---
 
-- Product management: Create, read, update, and delete products.
-- Category management: Organize products into categories for easier navigation.
-- API documentation: Automatically generated and interactive API docs provided by FastAPI.
-- Database migrations: Ensure your database schema is up-to-date by applying migrations.
+## 🚀 Features
 
-## Features
+- CRUD operations for products and categories
+- User reviews for products
+- Automatic API docs (Swagger UI, ReDoc)
+- Database migrations with Alembic
+- Docker support for easy deployment
 
-- **FastAPI**: A modern, fast (high-performance), web framework for building APIs with Python 3.7+ based on standard Python type hints.
-- **CRUD operations**: Full support for creating, reading, updating, and deleting products and categories.
-- **Product reviews**: Users can leave reviews for products to share their feedback.
-- **Automatic API docs**: Interactive API documentation is automatically generated using Swagger UI and ReDoc.
+---
 
-## Installation
+## 🛠 Tech Stack
 
-1. Clone the repository:
-    ```sh
-    git clone https://github.com/Leifr22/e-store.git
-    ```
+- Python 3.7+
+- FastAPI
+- SQLAlchemy + Alembic
+- Uvicorn
+- PostgreSQL
+- Docker & Docker Compose
 
-2. Navigate to the project directory:
-    ```sh
-    cd e-store
-    ```
+---
 
-3. (Optional) Create and activate a virtual environment:
-    ```sh
-    python -m venv venv
-    source venv/bin/activate  # On Windows use `venv\Scripts\activate`
-    ```
+## 💾 Installation
 
-4. Install the dependencies:
-    ```sh
-    pip install -r requirements.txt
-    ```
+1. Clone the repo:
 
-5. Apply migrations to set up the database schema:
-    ```sh
-    alembic upgrade head
-    ```
+   ```bash
+   git clone https://github.com/Leifr22/e-store.git
+   cd e-store
+   ```
+2. (Optional) Create a virtual environment:
 
-## Usage
+   ```bash
+   python -m venv venv
+   source venv/bin/activate  # Windows: venv\Scripts\activate
+   ```
+3. Install dependencies:
 
-1. Start the server:
-    ```sh
-    uvicorn main:app --reload
-    ```
+   ```bash
+   pip install -r requirements.txt
+   ```
 
-2. Access the API documentation at:
-    - Swagger UI: `http://127.0.0.1:8000/docs`
-    - ReDoc: `http://127.0.0.1:8000/redoc`
+---
 
-3. Use the provided endpoints to manage products and categories.
+## ⚙️ Setup & Run
 
-## Project Structure
+1. Set the database URL (default: SQLite):
 
-- `main.py`: The entry point of the application.
-- `models.py`: Contains the database models.
-- `schemas.py`: Defines the request and response schemas.
-- `crud.py`: Implements the CRUD operations.
-- `database.py`: Sets up the database connection.
-- `endpoints/`: Contains the API route definitions.
+   ```bash
+   export DATABASE_URL="sqlite:///./e_store.db"
+   ```
+2. Apply migrations:
 
-## Upcoming Features
+   ```bash
+   alembic upgrade head
+   ```
+3. Start the server:
 
-- Enhanced review management: Ability to moderate and respond to product reviews.
+   ```bash
+   uvicorn app.main:app --reload --host 0.0.0.0 --port 8000
+   ```
+4. Open docs:
 
-## Contributing
+   - Swagger UI: `http://localhost:8000/docs`
+   - ReDoc: `http://localhost:8000/redoc`
 
-Contributions are welcome! Please fork the repository and open a pull request with your proposed changes.
+---
+
+## 📂 Project Structure
+
+```
+e-store/
+├── alembic/        # DB migrations
+├── app/            # Source code
+│   ├── main.py     # Entrypoint
+│   ├── models.py   # ORM models
+│   ├── schemas.py  # Pydantic schemas
+│   ├── crud.py     # CRUD logic
+│   └── routers/    # Routes (products, categories, reviews)
+├── docker-compose.yml  # Docker Compose configuration
+├── Dockerfile          # Docker image definition
+├── requirements.txt
+├── alembic.ini
+├── README.md
+└── .gitignore
+```
+
+---
+
+## 🔜 Upcoming
+
+- Extended admin rights function
+- Shopping cart & orders
+```
+
+Этот README содержит всю необходимую информацию о проекте, включая особенности, используемые технологии, инструкции по установке и запуску, а также структуру проекта и планы на будущее. Если понадобится что-то дополнить или изменить, дайте знать!
