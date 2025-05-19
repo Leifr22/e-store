@@ -76,19 +76,39 @@ A lightweight, high-performance e-commerce backend built with FastAPI. Manage pr
 
 ```
 e-store/
-├── alembic/        # DB migrations
-├── app/            # Source code
-│   ├── main.py     # Entrypoint
-│   ├── models.py   # ORM models
-│   ├── schemas.py  # Pydantic schemas
-│   ├── crud.py     # CRUD logic
-│   └── routers/    # Routes (products, categories, reviews)
-├── docker-compose.yml  # Docker Compose configuration
-├── Dockerfile          # Docker image definition
-├── requirements.txt
-├── alembic.ini
+├── migrations/                      # DB миграции
+│   ├── versions/
+│   ├── env.py
+│   ├── README
+│   └── script.py.mako
+│
+├── app/                          # Исходный код
+│   ├── main.py                   # Точка входа в приложение
+│   ├── backend/                  # Зависимости БД
+│   │   ├── __init__.py
+│   │   ├── db.py
+│   │   └── db_depends.py
+│   │
+│   ├── models/                   # Pydantic / ORM модели
+│   │   ├── categories.py
+│   │   ├── products.py
+│   │   ├── review.py
+│   │   └── user.py
+│   │
+│   └── routers/                  # FastAPI маршруты
+│       ├── __init__.py
+│       ├── auth.py
+│       ├── categories.py
+│       ├── permission.py
+│       └── products.py
+│
+├── docker-compose.yml           # Docker Compose
+├── Dockerfile                   # Docker Image
+├── requirements.txt             # Зависимости
+├── alembic.ini                  # Настройка Alembic
 ├── README.md
 └── .gitignore
+
 ```
 
 ---
